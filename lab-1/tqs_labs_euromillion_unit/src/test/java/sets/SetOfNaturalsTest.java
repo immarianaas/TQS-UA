@@ -98,5 +98,23 @@ public class SetOfNaturalsTest {
 
     }
 
+    @Test
+    public void testIntersection() {
+        // with equal sets
+        assertTrue(setB.intersects(setD));
+
+        // with an empty set
+        assertTrue(setB.intersects(setA));
+        assertFalse(setA.intersects(setB));
+
+        // "normal" valid case
+        SetOfNaturals newset = SetOfNaturals.fromArray(new int[] {10, 20});
+        assertTrue(setB.intersects(newset));
+
+        // and the opposite...
+        assertFalse(newset.intersects(setB));
+    }
+
+
 
 }
