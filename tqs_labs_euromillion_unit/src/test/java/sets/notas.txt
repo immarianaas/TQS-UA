@@ -1,0 +1,6 @@
+1. ao adicionar 2 numeros iguais, verificar se "entram" os 2 (não é suposto)
+2. se dá exception ao adicionar numeros "ilegais"
+3. verificar se a intersecao esta certain
+4. se aumenta o tamanho ao adicionar
+5. se começa com 0
+4. verificar tmb no from arrays e tambem no add de arrays
