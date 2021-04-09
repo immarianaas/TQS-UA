@@ -1,0 +1,261 @@
+{
+  "id": "d6ce92cc-4a15-47f4-bed9-2b891ca110de",
+  "version": "2.0",
+  "name": "toptal",
+  "url": "https://www.toptal.com",
+  "tests": [{
+    "id": "69f4cd13-259a-4543-ae29-00f694220f5d",
+    "name": "toptal",
+    "commands": [{
+      "id": "f31e249a-3c4f-48ac-95ef-12da21dfd95c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "66db97ad-2686-46ae-a26d-5ff1e4de3ba7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "829x829",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7fc20334-715e-4abc-8fe1-70e9742ceb89",
+      "comment": "",
+      "command": "click",
+      "target": "css=.\\_2zORpOH1 > span:nth-child(2)",
+      "targets": [
+        ["css=.\\_2zORpOH1 > span:nth-child(2)", "css:finder"],
+        ["xpath=//nav[@id='nav']/div/button/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "392d0dc7-7266-4e16-840e-bc6bbf71cf34",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.\\_2zORpOH1",
+      "targets": [
+        ["css=.\\_2zORpOH1", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//nav[@id='nav']/div/button", "xpath:idRelative"],
+        ["xpath=//nav/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "947e1b59-b035-4561-8e9d-ea20f6695027",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.\\_2zORpOH1",
+      "targets": [
+        ["css=.\\_2zORpOH1", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//nav[@id='nav']/div/button", "xpath:idRelative"],
+        ["xpath=//nav/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bc5c805e-a649-493d-996a-f29178738da4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Apply as a Freelancer",
+      "targets": [
+        ["linkText=Apply as a Freelancer", "linkText"],
+        ["css=.\\_3Tzn-Ksn:nth-child(1) > .\\_1bcYCljm", "css:finder"],
+        ["xpath=//a[contains(text(),'Apply as a Freelancer')]", "xpath:link"],
+        ["xpath=//nav[@id='nav']/div/div[2]/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/talent/apply')]", "xpath:href"],
+        ["xpath=//div/div[2]/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Apply as a Freelancer')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "02538928-c800-4c7b-82c8-e3d4e1315ee1",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Sign in with LinkedIn",
+      "targets": [
+        ["linkText=Sign in with LinkedIn", "linkText"],
+        ["css=.button-is-outlined", "css:finder"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/users/auth/linkedin')]", "xpath:href"],
+        ["xpath=//fieldset/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Sign in with LinkedIn')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b3235ac-4a65-4f2f-a0f7-141cfbc0b073",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Sign in with LinkedIn",
+      "targets": [
+        ["linkText=Sign in with LinkedIn", "linkText"],
+        ["css=.button-is-outlined", "css:finder"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/users/auth/linkedin')]", "xpath:href"],
+        ["xpath=//fieldset/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Sign in with LinkedIn')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0bbfef3e-e5e1-489d-905e-a6dd45139c0a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.has-default_value",
+      "targets": [
+        ["css=.has-default_value", "css:finder"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[4]/div", "xpath:idRelative"],
+        ["xpath=//div[4]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aecf9c45-d8cb-487e-b30d-4d554c6e361c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.is-active > .custom_select-options_item_title",
+      "targets": [
+        ["css=.is-active > .custom_select-options_item_title", "css:finder"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[4]/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "599862a7-ffd9-4f7b-b98b-c839151b8aaf",
+      "comment": "",
+      "command": "click",
+      "target": "id=talent_create_applicant_full_name",
+      "targets": [
+        ["id=talent_create_applicant_full_name", "id"],
+        ["name=talent_create_applicant[full_name]", "name"],
+        ["css=#talent_create_applicant_full_name", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_full_name']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77e75c37-ee29-4ef3-b4ec-671563ba130c",
+      "comment": "",
+      "command": "type",
+      "target": "id=talent_create_applicant_full_name",
+      "targets": [
+        ["id=talent_create_applicant_full_name", "id"],
+        ["name=talent_create_applicant[full_name]", "name"],
+        ["css=#talent_create_applicant_full_name", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_full_name']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "Dejan Zivanovic"
+    }, {
+      "id": "dcdbed7f-05cd-47bb-a298-bb91d01cf771",
+      "comment": "",
+      "command": "click",
+      "target": "id=talent_create_applicant_full_name",
+      "targets": [
+        ["id=talent_create_applicant_full_name", "id"],
+        ["name=talent_create_applicant[full_name]", "name"],
+        ["css=#talent_create_applicant_full_name", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_full_name']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79f01f92-e71b-48af-bdf7-cb3020c3a20a",
+      "comment": "",
+      "command": "type",
+      "target": "id=talent_create_applicant_full_name",
+      "targets": [
+        ["id=talent_create_applicant_full_name", "id"],
+        ["name=talent_create_applicant[full_name]", "name"],
+        ["css=#talent_create_applicant_full_name", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_full_name']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "Dejan Zivanovic Automated Test"
+    }, {
+      "id": "b359cf4d-1e77-47a8-b059-b68aa404f76c",
+      "comment": "",
+      "command": "click",
+      "target": "id=talent_create_applicant_email",
+      "targets": [
+        ["id=talent_create_applicant_email", "id"],
+        ["name=talent_create_applicant[email]", "name"],
+        ["css=#talent_create_applicant_email", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_email']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd9d777d-f4cd-4ebd-b4cb-d98cc5b0d2ab",
+      "comment": "",
+      "command": "type",
+      "target": "id=talent_create_applicant_email",
+      "targets": [
+        ["id=talent_create_applicant_email", "id"],
+        ["name=talent_create_applicant[email]", "name"],
+        ["css=#talent_create_applicant_email", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_email']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "dejan@toptal.com"
+    }, {
+      "id": "d329e3d0-9f38-4caa-afbb-fa9e69f5e7fb",
+      "comment": "",
+      "command": "type",
+      "target": "id=talent_create_applicant_password",
+      "targets": [
+        ["id=talent_create_applicant_password", "id"],
+        ["name=talent_create_applicant[password]", "name"],
+        ["css=#talent_create_applicant_password", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_password']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "password123"
+    }, {
+      "id": "f803d907-6dd6-4dd2-ab5e-eb61cfd0d897",
+      "comment": "",
+      "command": "type",
+      "target": "id=talent_create_applicant_password_confirmation",
+      "targets": [
+        ["id=talent_create_applicant_password_confirmation", "id"],
+        ["name=talent_create_applicant[password_confirmation]", "name"],
+        ["css=#talent_create_applicant_password_confirmation", "css:finder"],
+        ["xpath=//input[@id='talent_create_applicant_password_confirmation']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/fieldset/div[8]/input", "xpath:idRelative"],
+        ["xpath=//div[8]/input", "xpath:position"]
+      ],
+      "value": "password123"
+    }, {
+      "id": "37cf41fa-53e8-40db-8920-bf08d3841978",
+      "comment": "",
+      "command": "click",
+      "target": "id=save_new_talent_create_applicant",
+      "targets": [
+        ["id=save_new_talent_create_applicant", "id"],
+        ["name=commit", "name"],
+        ["css=#save_new_talent_create_applicant", "css:finder"],
+        ["xpath=//input[@id='save_new_talent_create_applicant']", "xpath:attributes"],
+        ["xpath=//form[@id='new_talent_create_applicant']/section/div/div/footer/input", "xpath:idRelative"],
+        ["xpath=//footer/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "aa04e4e2-a349-468f-a55b-dc0f14cd9efe",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://www.toptal.com/"],
+  "plugins": []
+}

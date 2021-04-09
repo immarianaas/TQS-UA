@@ -1,0 +1,622 @@
+{
+  "id": "1494d396-7af3-4083-b97e-7d087f06f885",
+  "version": "2.0",
+  "name": "blaze-demo",
+  "url": "https://blazedemo.com",
+  "tests": [{
+    "id": "4d4b4a78-f427-443c-976e-270045077690",
+    "name": "blaze-demo",
+    "commands": [{
+      "id": "332c6de4-497e-4cbf-9e14-0240a123269c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b29fe2c-3403-4d7d-8ae1-03ddb9bb2e43",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1233x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56c26608-4003-4626-a62f-2e272a375c2e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.jumbotron > .container",
+      "targets": [
+        ["css=.jumbotron > .container", "css:finder"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92564989-89ad-4ef0-aee2-469986550067",
+      "comment": "",
+      "command": "click",
+      "target": "css=.jumbotron > .container",
+      "targets": [
+        ["css=.jumbotron > .container", "css:finder"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbed9517-9391-4bb2-9084-7bda3116b023",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.jumbotron > .container",
+      "targets": [
+        ["css=.jumbotron > .container", "css:finder"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79d8bc39-3358-4468-b070-bed39bd001b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "128b35b4-e245-4175-b667-d86239debca9",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9d0b97a-42d9-43e8-b457-ffe108f33b86",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "51c44bf1-be55-42cb-9abf-d34d40a14089",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "045815cd-e0a0-47ea-9ccf-03c118953796",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "220f80ae-53df-4cfe-b3ef-0827fd3c5cf4",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "792e42a0-2a62-4dc0-8ada-247a26d61531",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "31572aa1-748a-4c6b-acf1-d3b65817aa26",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "787a1699-b33e-492a-8569-a73674ce2390",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9be6542-d802-496e-8b46-4f91a49741f7",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome to the Simple Travel Agency!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c4788d05-4b0f-4df7-909a-5da7b31e7fe9",
+      "comment": "",
+      "command": "click",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='reserve.php']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b36e0492-bace-44e7-80e0-83a8f02889c1",
+      "comment": "",
+      "command": "click",
+      "target": "name=fromPort",
+      "targets": [
+        ["name=fromPort", "name"],
+        ["css=.form-inline:nth-child(1)", "css:finder"],
+        ["xpath=//select[@name='fromPort']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5d3d739-7b16-4860-8abf-b981a0bc846f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//input[@value='Find Flights']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7bba86ea-73bb-4646-9e10-88f52ac0c94d",
+      "comment": "",
+      "command": "click",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Flights from Paris to Buenos Aires:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "40cdea01-889a-4014-8193-9b7b8187d197",
+      "comment": "",
+      "command": "click",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Flights from Paris to Buenos Aires:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5759dcb-7dc4-4c4b-a237-3199a3c87088",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Flights from Paris to Buenos Aires:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc61f416-5fc6-481e-8863-c53e89ca635e",
+      "comment": "",
+      "command": "click",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Flights from Paris to Buenos Aires:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "43aa4b8b-b1a3-40a2-b4cd-6a5598d22d04",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Flights from Paris to Buenos Aires:')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac3ea664-f070-4e78-b5b2-c2038165c2b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b322a5f-474a-4f44-bd28-c6b989178ded",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .btn",
+      "targets": [
+        ["css=tr:nth-child(1) .btn", "css:finder"],
+        ["xpath=//input[@value='Choose This Flight']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "76e41812-603c-48ea-9a2d-f42be3b63de7",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "58d82895-9eb7-4531-a938-ddf02e08cadd",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e22cb275-437a-4681-b505-0375c4d91c4f",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "99b2c479-5862-4717-bd1a-622aea0507b7",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb637bd1-a1a7-41ec-b179-68807e941c5b",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b2f8a68-843f-48b7-a424-17feffbb0af5",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "864468e0-decf-4c67-88e3-ae0a8cc19a25",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "595aad7b-42d7-4b8d-b97b-b58d7b809a8f",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d3b9721-25dd-4c14-89ba-0a86f44e2c04",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3c8ea42-b162-4b5f-b8ea-8919f0292c34",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Your flight from TLV to SFO has been reserved.')]", "xpath:innerText"]
+      ],
+      "value": "Your flight from TLV to SFO has been reserved."
+    }, {
+      "id": "d1c469b1-f345-4cf8-ac95-783985df44f4",
+      "comment": "",
+      "command": "click",
+      "target": "id=inputName",
+      "targets": [
+        ["id=inputName", "id"],
+        ["name=inputName", "name"],
+        ["css=#inputName", "css:finder"],
+        ["xpath=//input[@id='inputName']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07d1a3a6-d8ea-4c75-981c-ebabb70f7bd5",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputName",
+      "targets": [
+        ["id=inputName", "id"],
+        ["name=inputName", "name"],
+        ["css=#inputName", "css:finder"],
+        ["xpath=//input[@id='inputName']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "sda"
+    }, {
+      "id": "7be30666-fafc-4359-b7e3-6afd2f5cffd7",
+      "comment": "",
+      "command": "type",
+      "target": "id=address",
+      "targets": [
+        ["id=address", "id"],
+        ["name=address", "name"],
+        ["css=#address", "css:finder"],
+        ["xpath=//input[@id='address']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "asdasd"
+    }, {
+      "id": "a95020c6-22f0-4c67-90dc-91970118286d",
+      "comment": "",
+      "command": "type",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["name=city", "name"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "sfds"
+    }, {
+      "id": "bd74f8f7-6113-494d-bde6-ce2b99035ee1",
+      "comment": "",
+      "command": "type",
+      "target": "id=state",
+      "targets": [
+        ["id=state", "id"],
+        ["name=state", "name"],
+        ["css=#state", "css:finder"],
+        ["xpath=//input[@id='state']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "adsas"
+    }, {
+      "id": "c7ecb6ff-18da-4529-a19a-283467bc6957",
+      "comment": "",
+      "command": "type",
+      "target": "id=zipCode",
+      "targets": [
+        ["id=zipCode", "id"],
+        ["name=zipCode", "name"],
+        ["css=#zipCode", "css:finder"],
+        ["xpath=//input[@id='zipCode']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": "77"
+    }, {
+      "id": "2d5b13b8-0047-4cb6-8930-e67a8f8a977b",
+      "comment": "",
+      "command": "select",
+      "target": "id=cardType",
+      "targets": [],
+      "value": "label=American Express"
+    }, {
+      "id": "ddc98785-def5-4c66-a224-a3c98d7d08aa",
+      "comment": "",
+      "command": "select",
+      "target": "id=cardType",
+      "targets": [],
+      "value": "label=Diner's Club"
+    }, {
+      "id": "603d006f-7ddd-4625-b1ac-dcf87c8b93be",
+      "comment": "",
+      "command": "select",
+      "target": "id=cardType",
+      "targets": [],
+      "value": "label=American Express"
+    }, {
+      "id": "655ba428-26b4-4db5-9827-b5d19ed6f27e",
+      "comment": "",
+      "command": "select",
+      "target": "id=cardType",
+      "targets": [],
+      "value": "label=Visa"
+    }, {
+      "id": "6d5cb2b0-fe84-4958-ae9a-0aaf56e41220",
+      "comment": "",
+      "command": "type",
+      "target": "id=creditCardNumber",
+      "targets": [
+        ["id=creditCardNumber", "id"],
+        ["name=creditCardNumber", "name"],
+        ["css=#creditCardNumber", "css:finder"],
+        ["xpath=//input[@id='creditCardNumber']", "xpath:attributes"],
+        ["xpath=//div[7]/div/input", "xpath:position"]
+      ],
+      "value": "567890"
+    }, {
+      "id": "8efb53bc-5be8-4588-91cf-d4b492bb9749",
+      "comment": "",
+      "command": "type",
+      "target": "id=nameOnCard",
+      "targets": [
+        ["id=nameOnCard", "id"],
+        ["name=nameOnCard", "name"],
+        ["css=#nameOnCard", "css:finder"],
+        ["xpath=//input[@id='nameOnCard']", "xpath:attributes"],
+        ["xpath=//div[10]/div/input", "xpath:position"]
+      ],
+      "value": "aaaa"
+    }, {
+      "id": "5b926ace-0144-435a-9772-608909a737ab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.checkbox",
+      "targets": [
+        ["css=.checkbox", "css:finder"],
+        ["xpath=//div[11]/div/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Remember me')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6707ba87-289d-433e-bcb4-344a0081786d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//input[@value='Purchase Flight']", "xpath:attributes"],
+        ["xpath=//div[11]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "53f21d93-878f-4063-869b-9b013e398694",
+      "comment": "",
+      "command": "click",
+      "target": "css=pre",
+      "targets": [
+        ["css=pre", "css:finder"],
+        ["xpath=//pre", "xpath:position"],
+        ["xpath=//pre[contains(.,'{\n    \"id\": \"1617806360734\",\n    \"status\": \"PendingCapture\",\n    \"amount\": \"555\",\n    \"currency\": \"USD\",\n    \"authCode\": \"888888\",\n    \"payment\": {\n        \"cardNumber\": \"xxxxxxxxxxxx1111\",\n        \"cardExpirationMonth\": \"11\",\n        \"cardExpirationYear\": \"2018\"\n    },\n    \"_links\": {\n        \"self\": {\n            \"href\": \"https=>\\/\\/sandbox.api.visa.com\\/cybersource\\/payments\\/v1\\/authorizations\\/1617806360734\",\n            \"method\": \"GET\"\n        },\n        \"capture\": [\n            {\n                \"href\": \"https=>\\/\\/sandbox.api.visa.com\\/cybersource\\/payments\\/v1\\/authorizations\\/1617806360734\\/captures\",\n                \"method\": \"POST\"\n            }\n        ],\n        \"reversal\": [\n            {\n                \"href\": \"https=>\\/\\/sandbox.api.visa.com\\/cybersource\\/payments\\/v1\\/authorizations\\/1617806360734\\/reversals\",\n                \"method\": \"POST\"\n            }\n        ]\n    }\n}\n')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a63b0459-396f-4be0-abe1-b3ba6416781b",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Thank you for your purchase today!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "72778778-79a0-49e4-86df-c468555bd558",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Thank you for your purchase today!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e464a81b-d8b0-422d-9fc1-a6b6f8257f9a",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Thank you for your purchase today!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b529b414-6d0f-4ce0-9c85-d4b5787f2808",
+      "comment": "",
+      "command": "click",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Thank you for your purchase today!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9834ddf9-e185-441e-9764-a086a6e1e5c7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Thank you for your purchase today!')]", "xpath:innerText"]
+      ],
+      "value": "Thank you for your purchase today!"
+    }, {
+      "id": "f98f5fbf-bdcc-4ea4-a7a3-b9b204c6f4f8",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "BlazeDemo Confirmation",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c99d1e22-65d0-4a4e-8236-2daee2dd3607",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4d4b4a78-f427-443c-976e-270045077690"]
+  }],
+  "urls": ["https://blazedemo.com/"],
+  "plugins": []
+}
