@@ -14,12 +14,14 @@ Outros exemplos da sua utilização encontram-se em todos os ficheiros *.java* d
 
 
 **b)**
-zzzzz
+O ficheiro `EmployeeService_UnitTest.java` possui uma classe de testes que utiliza a estratégia de fazer **mock** do comportamento do repositório.
+
 
 **c)**
 A anotaçáo **@Mock** indica ao Mockito para criar e instanciar um "mock" para permitir que não seja necessário usar (e inicializar, etc) uma implementação real da interface ou classe que está anotada. Esta anotação não é limitada ao Spring Boot, podendo ser utilizada com qualquer outra framework.
 
 Por outro lado, **@MockBean** existe apenas dentro da framework Spring. No ambiente de testes do Spring Boot, pode-se criar um Spring Context dedicado para os testes, permitindo realizar testes de integração de multiplas classes. Este contexto pode ser populado utilizando o Spring Context completo, ou "sliced contexts". Para inicializar este contexto, todas as dependências dos *beans* têm de ser satisfeitas, o que pode ser feito instanciando-as dentro do contexto. Por vezes pode não ser necessário utilizar a verdadeira implementação do beam, e então pode-se criar **mocks** destes para o efeito de inicializar o Spring Text Context.
+
 
 **d)**
 zzzzz

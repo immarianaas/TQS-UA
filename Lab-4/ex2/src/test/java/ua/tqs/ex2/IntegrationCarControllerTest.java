@@ -16,14 +16,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
+import java.io.IOException;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
+// @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-// @RunWith(SpringRunner.class)
-//@AutoConfigureTestDatabase
-
+@AutoConfigureTestDatabase
 public class IntegrationCarControllerTest {
     @Test
     public void t() {
