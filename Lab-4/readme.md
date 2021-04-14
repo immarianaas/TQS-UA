@@ -24,7 +24,4 @@ Por outro lado, **@MockBean** existe apenas dentro da framework Spring. No ambie
 
 
 **d)**
-zzzzz
-
-
-lombok!! @data na classe gera os getters e setters
+O ficheiro será usado quando a anotação `@TestPropertySource` é usada com um argumento a "apontar" para ele. Trata-se de um ficheiro de configuração para o contexto, que, neste caso, indica qual a base de dados que deve ser usada, e como aceder a ela. Neste contexto, ele irá permitir utilizar uma base de dados real nos testes presentes na classe onde essa anotação está.

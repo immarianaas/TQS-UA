@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 // @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestPropertySource( locations = "/application-integrationtest.properties")
-@AutoConfigureTestDatabase
 public class IntegrationTestWithMysql {
     @LocalServerPort
     int randomServerPort;
