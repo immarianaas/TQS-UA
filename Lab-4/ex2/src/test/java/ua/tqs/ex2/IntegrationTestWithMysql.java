@@ -17,6 +17,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
@@ -26,8 +27,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 // @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@TestPropertySource( locations = "/application-integrationtest.properties")
 @AutoConfigureTestDatabase
-public class IntegrationCarControllerTest {
+public class IntegrationTestWithMysql {
     @LocalServerPort
     int randomServerPort;
 
