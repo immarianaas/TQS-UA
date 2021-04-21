@@ -20,8 +20,8 @@ public class BookSearchSteps {
     List<Book> books_found = new ArrayList<Book>();
     
 
-    @ParameterType("([0-9]{4})-([0-9]{2})-([0-9]{2})")
-    public Date iso8601Date(String year, String month, String day) {
+    @ParameterType("([0-9]{2})-([0-9]{2})-([0-9]{4})")
+    public Date iso8601Date(String day, String month, String year) {
         LocalDateTime a = LocalDateTime.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day), 0, 0);
         return java.sql.Timestamp.valueOf(a);
     }
@@ -43,8 +43,8 @@ public class BookSearchSteps {
     @When("the customer searches for books published between {int} and {int}")
     public void the_customer_searches_for_books_published_between_and(Integer int1, Integer int2) {
        
-        Date bef = iso8601Date(String.valueOf(int1), "01", "01");
-        Date aft = iso8601Date(String.valueOf(int2), "12", "31");
+        Date bef = iso8601Date("01", "01", String.valueOf(int1));
+        Date aft = iso8601Date("31", "12", String.valueOf(int2));
 
         books_found = lib.findBooks(bef, aft);
     }
@@ -54,9 +54,9 @@ public class BookSearchSteps {
     }
 
     @Then("Book {int} should have the title {string}")
-    public void book_should_have_the_title(Integer int1, String string) {
-        assertTrue(books_found.size() < int1);
-        assertTrue(books_found.get(int1) != null);
+    public void book_should_have_the_title(Integer int1, String string) throws Exception{
+        assertTrue(books_found.size() >= int1);
+        assertTrue(books_found.get(int1-1) != null);
         assertThat(string, equalTo(books_found.get(int1-1).getTitle()));
 
     }
