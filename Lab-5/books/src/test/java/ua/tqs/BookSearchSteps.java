@@ -60,4 +60,12 @@ public class BookSearchSteps {
         assertThat(string, equalTo(books_found.get(int1-1).getTitle()));
 
     }
+
+    @When("the customer serches for books written by the author {string}")
+    public void the_customer_serches_for_books_written_by_the_author(String string) {
+        books_found = lib.findByAuthor(string);
+        System.err.println(books_found);
+    }
+
+
 }

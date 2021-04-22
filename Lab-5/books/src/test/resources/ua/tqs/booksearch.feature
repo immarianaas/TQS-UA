@@ -9,3 +9,12 @@ Feature: Book search
             Then 2 books should have been found
                 And Book 1 should have the title 'Some other book'
                 And Book 2 should have the title 'One good book'
+
+    Scenario: Search books by author
+        Given a book with the title 'Zacht Tikt De Regen', written by 'Ferry de Lits', published in 03-10-2006 
+            And another book with the title 'Geef Mij Je Angst', written by 'Andre Hazes', published in 05-03-1983
+            And another book with the title 'Bedankt Mijn Vriend', written by 'Andre Hazes', published in 01-12-1988
+        When the customer serches for books written by the author 'Andre Hazes'
+            Then 2 books should have been found
+                And Book 1 should have the title 'Bedankt Mijn Vriend'
+                And Book 2 should have the title 'Geef Mij Je Angst'
