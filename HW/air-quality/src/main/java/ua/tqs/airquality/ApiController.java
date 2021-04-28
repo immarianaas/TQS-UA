@@ -11,12 +11,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class ApiController {
 
     @Autowired
-    private CallExterior serv;
+    private DataAccess serv;
 
+    @Autowired
+    private Cache cache;
+
+    @GetMapping("/cache")
+    public ResponseEntity<Map<String, Integer>> getCacheInfo() {
+        Map<String, Integer> resp = new HashMap<String, Integer>();
+        resp.put("hits", cache.getNoHits());
+        resp.put("misses", cache.getNoMisses());
+        resp.put("requests", cache.getNoRequests());
+        return new ResponseEntity<>(resp, HttpStatus.OK);
+    }
 
     @GetMapping("/stations")
     public ResponseEntity<Map<String, String>> getStationsByCountry(@RequestParam(required=true) String country) {

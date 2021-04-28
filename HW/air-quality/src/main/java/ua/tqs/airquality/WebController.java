@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebController {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     // dá para ir buscar dados à localizacao mais proxima do utilizador, pode ser interessasnte!!
     // https://aqicn.org/json-api/doc/
 
 
     @Autowired
-    private CallExterior serv;
+    private DataAccess serv;
 
     @GetMapping("/")
     public String home(Model model) {//throws MalformedURLException, IOException, ParseException {
+        LOGGER.info("This is working.");
         model.addAttribute("title", "Air Quality Forecast!");
         Map<String, String> loc = serv.getLocationsByCountry("finland");
         // System.out.println(loc);
