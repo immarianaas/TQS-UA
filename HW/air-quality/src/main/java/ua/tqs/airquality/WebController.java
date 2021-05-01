@@ -35,8 +35,8 @@ public class WebController {
     @GetMapping("/info")
     public String infoByCity(@RequestParam(required=true) String city, Model model) {
         model.addAttribute("title", "yay!!");
-        TreeMap<String, HashMap<String, Integer[]>> info = new TreeMap<String, HashMap<String, Integer[]>>();
-        String loc = serv.getInfoByStation(city, info);
+        TreeMap<String, HashMap<String, Integer[]>> info = serv.getInfoByStation(city);
+        String loc = serv.getNameByUrl(city);
 
         model.addAttribute("info", info);
         model.addAttribute("loc", loc);

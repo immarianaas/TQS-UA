@@ -40,8 +40,8 @@ public class ApiController {
 
     @GetMapping("/forecast")
     public ResponseEntity<TreeMap<String, HashMap<String, Integer[]>>> getInfoByStation(@RequestParam(required=true) String station, @RequestParam(required=false) String type, @RequestParam(required=false) String date) {
-        TreeMap<String, HashMap<String, Integer[]>> info = new TreeMap<String, HashMap<String, Integer[]>>();
-        String loc = serv.getInfoByStation(station, info);
+        TreeMap<String, HashMap<String, Integer[]>> info = serv.getInfoByStation(station); // new TreeMap<String, HashMap<String, Integer[]>>();
+        String loc = serv.getNameByUrl(station);
 
         if (type != null) {;}
         if (date != null) {;}

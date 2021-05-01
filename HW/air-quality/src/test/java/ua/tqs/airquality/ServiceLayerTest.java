@@ -27,7 +27,7 @@ public class ServiceLayerTest {
     DataAccess serv;
 
 
-
+/*
     @Test
     void whenAllGood_Locations() {
         // String expected_res = "{\"status\":\"ok\",\"data\":[{\"uid\":8411,\"aqi\":\"26\",\"time\":{\"tz\":\"+02:00\",\"stime\":\"2021-05-01 15:00:00\",\"vtime\":1619874000},\"station\":{\"name\":\"Escaldes Engordany, Andorra\",\"geo\":[42.509694,1.539138],\"url\":\"andorra/fixa\"}}]}";
@@ -41,4 +41,5 @@ public class ServiceLayerTest {
 
 
     }
+    */
 }

@@ -4,8 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class DataAccess {
@@ -17,24 +22,108 @@ public class DataAccess {
     private Cache cache;
 
     public Map<String, String> getLocationsByCountry(String country) {
-        Map<String, String> ret = cache.getLocationsByCountry(country);
-        if (ret != null) return ret;
-        ret = callExterior.getLocationsByCountry(country);
-        cache.saveLocationsByCountry(country, ret);
-        return ret;
+        String inline = cache.getLocationsByCountry(country);
+        if (inline == null) {
+            inline = callExterior.getLocationsByCountry(country);
+            if (inline == null) return null;
+            cache.saveLocationsByCountry(country, inline);
+        }
+
+        return getLocationInfoFromString(inline);
     }
 
-    public String getInfoByStation(String stationurl, TreeMap<String, HashMap<String, Integer[]>> valuesPerDate) {
-        TreeMap<String, HashMap<String, Integer[]>> ret = cache.getInfoByStation(stationurl);
-        String station_name = null;
-        if (ret != null) { 
-            valuesPerDate.putAll(ret);
-            station_name = cache.getStationNameByUrl(stationurl);
-            if (station_name != null) return station_name; // should ALWAYS happen
+    public TreeMap<String, HashMap<String, Integer[]>> getInfoByStation(String stationurl) {
+        String inline = cache.getInfoByStation(stationurl);
+        if (inline == null) { 
+            inline = callExterior.getInfoByStation(stationurl); 
+            if (inline == null) return null;
+            cache.saveInfoByStation(stationurl, inline);
         }
-        station_name = callExterior.getInfoByStation(stationurl, valuesPerDate);
-        cache.saveInfoByStation(stationurl, station_name, valuesPerDate);
-        return station_name;
+        return getStationInfoFromString(inline);
+    }
+
+    public String getNameByUrl(String stationurl) {
+        String inline = cache.getInfoByStation(stationurl);
+        if (inline == null) { 
+            inline = callExterior.getInfoByStation(stationurl); 
+            if (inline == null) return null;
+            cache.saveInfoByStation(stationurl, inline);
+        }
+        return getNameFromString(inline);
+    }
+
+
+
+    /* --- helper --- */
+
+    public static Map<String, String> getLocationInfoFromString(String inline) {
+        Map<String, String> locations = new TreeMap<String, String>();
+
+        JSONParser parse = new JSONParser();
+        JSONObject data_obj;
+        try {
+            data_obj = (JSONObject) parse.parse(inline);
+        } catch (ParseException e) { return null; }
+
+        JSONArray obj = (JSONArray) data_obj.get("data");
+
+        for (int i = 0; i<obj.size(); i++) {
+            JSONObject entry = (JSONObject) ((JSONObject) obj.get(i)).get("station");
+            locations.put(entry.get("name").toString(), entry.get("url").toString());
+        }
+        
+        return locations;
+    }
+
+
+    public static TreeMap<String, HashMap<String, Integer[]>> getStationInfoFromString(String inline) {
+        TreeMap<String, HashMap<String, Integer[]>> valuesPerDate = new TreeMap<String, HashMap<String, Integer[]>>();
+
+
+        JSONParser parse = new JSONParser();
+        JSONObject data1 = null;
+        try {
+            data1 = (JSONObject) ((JSONObject) parse.parse(inline)).get("data");
+        } catch (ParseException e) {
+            return null;
+        }
+        JSONObject data_obj = (JSONObject) ((JSONObject) data1.get("forecast")).get("daily");
+
+        for (Object typeobj : data_obj.keySet()) {
+            String type = typeobj.toString();
+            JSONArray data = (JSONArray) data_obj.get(type);
+            for (int j = 0; j<data.size(); j++) {
+
+                JSONObject info = (JSONObject) data.get(j);
+                String date = info.get("day").toString();
+                Integer avg = Integer.parseInt(info.get("avg").toString());
+                Integer min = Integer.parseInt(info.get("min").toString());
+                Integer max = Integer.parseInt(info.get("max").toString());
+                Integer[] numbers = new Integer[] {avg, min, max};
+                if (!valuesPerDate.containsKey(date))
+                    valuesPerDate.put(date, new HashMap<String, Integer[]>());
+                
+                HashMap<String, Integer[]> datahm = valuesPerDate.get(date);
+                
+                datahm.put(type, numbers);
+            }
+        }
+        return valuesPerDate;
+    }
+
+
+    public static String getNameFromString(String inline) {
+        JSONParser parse = new JSONParser();
+        JSONObject data1 = null;
+        try {
+            data1 = (JSONObject) ((JSONObject) parse.parse(inline)).get("data");
+        } catch (ParseException e) {
+            return null;
+        }
+
+        Object cityobj = ((JSONObject) data1.get("city")).get("name");
+        String cityret = cityobj.toString();
+        return cityret;
     }
 
 
