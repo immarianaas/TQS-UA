@@ -2,7 +2,6 @@ package ua.tqs.airquality;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.springframework.stereotype.Service;
 

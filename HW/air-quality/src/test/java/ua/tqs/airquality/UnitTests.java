@@ -21,6 +21,7 @@ public class UnitTests {
     }
     
     /* falta fazer testes sobre o "tempo" */
+    /* e tmb meter hits & misses nos testes */
     
     @Test
     public void testCache_saveLocationsByCountry() {
