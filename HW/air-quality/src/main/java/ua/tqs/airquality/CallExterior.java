@@ -10,6 +10,7 @@ import java.util.TreeMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,9 +30,7 @@ public class CallExterior {
                     // get the resp. code
             int respcode = conn.getResponseCode();
 
-
             if (respcode != 200) {
-                System.err.println("hMMMMMM");
                 throw new RuntimeException("HELPPPP");
             }
             Scanner sc = new Scanner(url.openStream());
@@ -42,7 +41,7 @@ public class CallExterior {
             String inline = sb.toString();
             sc.close();
 
-            
+
             JSONParser parse = new JSONParser();
             JSONObject data_obj =  (JSONObject) parse.parse(inline);
 
@@ -54,7 +53,6 @@ public class CallExterior {
                 JSONObject entry = (JSONObject) ((JSONObject) obj.get(i)).get("station");
                 locations.put(entry.get("name").toString(), entry.get("url").toString());
             }
-
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -64,6 +62,8 @@ public class CallExterior {
         return locations;
 
     }
+
+
 
 
     public String getInfoByStation(String stationurl, TreeMap<String, HashMap<String, Integer[]>> valuesPerDate) {

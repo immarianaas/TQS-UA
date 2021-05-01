@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class WebController {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    // dá para ir buscar dados à localizacao mais proxima do utilizador, pode ser interessasnte!!
-    // https://aqicn.org/json-api/doc/
-
 
     @Autowired
     private DataAccess serv;
