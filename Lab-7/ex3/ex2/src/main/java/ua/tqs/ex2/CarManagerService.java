@@ -22,7 +22,7 @@ public class CarManagerService {
     }
 
     public Optional<Car> getCarDetails(Long id) {
-        Car resp = carRepository.findByCarId(id);
+        Car resp = carRepository.findById(id).get();
         return resp == null ? null : Optional.of(resp);
     }
 }

@@ -1,36 +1,32 @@
 package ua.tqs.ex2;
 
-import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.data.repository.support.Repositories;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
-import java.io.IOException;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import io.restassured.RestAssured;
+
+import org.json.simple.JSONObject;
 
 // @ExtendWith(SpringExtension.class)
+@Testcontainers
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@TestPropertySource( locations = "/application-integrationtest.properties")
 public class IntegrationTestWithMysql {
     @LocalServerPort
-    int randomServerPort;
+    int port;
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -38,39 +34,76 @@ public class IntegrationTestWithMysql {
     @Autowired
     private CarRepository carRep;
 
+    @Container
+    public static PostgreSQLContainer container = new PostgreSQLContainer()
+                    .withUsername("demo")
+                    .withPassword("passwd")
+                    .withDatabaseName("tqs1");
+
+
+    @DynamicPropertySource
+    static void properties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", container::getJdbcUrl);
+        registry.add("spring.datasource.password", container::getPassword);
+        registry.add("spring.datasource.username", container::getUsername);
+    }
+
+    Car car1, car2;
+
+    @BeforeEach
+    public void setup() {
+                car1 = carRep.saveAndFlush(new Car("maker11", "model11"));
+                car2 = carRep.saveAndFlush(new Car("maker22", "model22"));
+    }
+
     @AfterEach
     public void resetDB() {
-        carRep.deleteAll();
-    }
-
-    @Test
-    public void whenValidInput_thenCreateCar() {
-        Car c1 = new Car("maker1", "model1");
-        ResponseEntity<Car> entity = restTemplate.postForEntity("/api/cars", c1, Car.class);
-
-        List<Car> found = carRep.findAll();
-        assertThat(found).extracting(Car::getMaker).containsOnly("maker1");
+        // carRep.deleteAll();
     }
 
 
     @Test
-    public void givenEmployees_whenGetEmployees_thenStatus200()  {
-        createTestCar("maker1", "model1");
-        createTestCar("maker2", "model2");
+    public void postCarTest() {
+        String url = "http://localhost:"+ port +"/api/cars/";
+        Car new_car = new Car("new_maker", "new_model");
+
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("maker", new_car.getMaker());
+        jsonObj.put("model", new_car.getModel());
+
+        RestAssured
+            .given()
+                .contentType("application/json")
+                .body(jsonObj.toString())
+            .when()
+                .post(url)
+            .then()
+                .assertThat()
+                .statusCode(201);
 
 
-        ResponseEntity<List<Car>> response = restTemplate
-                .exchange("/api/cars", HttpMethod.GET, null, new ParameterizedTypeReference<List<Car>>() {
-                });
+        RestAssured
+            .when().get(url)
+            .then()
+                .assertThat()
+                .statusCode(200)
+                .body("model", Matchers.hasItem(new_car.getModel()));
+    }
+// ----
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).extracting(Car::getMaker).containsExactly("maker1", "maker2");
+    @Test
+    public void testGetCar() {
+        String url = "http://localhost:"+ port +"/api/cars/"+ car1.getId();
 
+        RestAssured
+            .when().get(url)
+            .then()
+                .assertThat()
+                .statusCode(202)
+                .body("model", Matchers.equalTo(car1.getModel()));
     }
 
-    private void createTestCar(String maker, String model) {
-        Car c = new Car(maker, model);
-        carRep.saveAndFlush(c);
-    }
+
+
 
 }

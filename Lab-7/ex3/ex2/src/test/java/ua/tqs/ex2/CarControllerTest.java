@@ -44,7 +44,7 @@ public class CarControllerTest {
     public void setup() {
         RestAssuredMockMvc.mockMvc(mvc);
     }
-
+    /*
     @Test
     public void whenPostCar_thenCreateCar() throws Exception {
         Car newcar = new Car("maker1", "modelo1");
@@ -83,6 +83,7 @@ public class CarControllerTest {
         .andExpect(jsonPath("$[1].maker", is(c2.getMaker())));
 
     }
+    */
 
     @Test
     public void givenCar_whenGetCars_thenReturnCarsArray_Lab7() {
