@@ -1,7 +1,6 @@
 package ua.tqs;
 
 import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,7 @@ public class TodoApiTest {
     public void testNumber4onTodoList() {
         // the title of ToDo #4 is “et porro tempora”
         /*
-        // estou a assumir que é o 4o elemento (index 3), e não
+        // assumindo que é o 4o elemento e nao o elemento c id 4
         // o elemento com id=4
         get("https://jsonplaceholder.typicode.com/todos")
         .then()
@@ -29,25 +28,15 @@ public class TodoApiTest {
         .assertThat()
         .body("[3].title", equalTo("et porro tempora"));
         */
-        /*
-        get("https://jsonplaceholder.typicode.com/todos")
-        .then()
-        .statusCode(200)
-        .assertThat()
-        .body("$", hasItem(
-            allOf(
-                hasEntry("id", 4)
-                hasEntry("title", "et porro tempora")
-            )
-            ));
-            */
-            get("https://jsonplaceholder.typicode.com/todos")
-            .then()
+
+        given()
+        .when()
+            .get("https://jsonplaceholder.typicode.com/todos/4")
+        .then().assertThat()
             .statusCode(200)
-            .assertThat()
-            .body("id", contains(4) /*, hasEntry("title", "et porro tempora") */
-                );
-            //.body(arguments, matcher, additionalKeyMatcherPairs);
+            .and().body("title", equalTo("et porro tempora"))
+            .and().body("id", equalTo(4));
+
     }
 
     @Test
