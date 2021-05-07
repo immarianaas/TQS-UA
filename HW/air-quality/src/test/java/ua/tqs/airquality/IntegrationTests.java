@@ -90,21 +90,7 @@ public class IntegrationTests {
     public void givenStation_thenReturnForecast() {
         String stationuri = "andorra/fixa";
 
-        TreeMap<String, HashMap<String, Integer[]>> data = new TreeMap<String, HashMap<String, Integer[]>>();
-        data.put("2021-04-29", new HashMap<String, Integer[]>() {{
-            put("o3", new Integer[] {31, 28, 33});
-            put("pm10", new Integer[] {4, 4, 6});
-            put("pm25", new Integer[] {14, 12, 23});
-            put("uvi", new Integer[] {0, 0, 3});
-        }});
-
-        Mockito
-                .when(dataAcc.getInfoByStation( stationuri ))
-                .thenReturn( data );
-
-        Mockito
-                .when(dataAcc.getNameByUrl( stationuri ))
-                .thenReturn("Escaldes Engordany, Andorra");
+        configureBehaviourInfoAndorra();
 
         RestAssuredMockMvc
                 .given()
@@ -125,21 +111,7 @@ public class IntegrationTests {
         String stationuri = "andorra/fixa";
         String t = "uvi";
 
-        TreeMap<String, HashMap<String, Integer[]>> data = new TreeMap<String, HashMap<String, Integer[]>>();
-        data.put("2021-04-29", new HashMap<String, Integer[]>() {{
-            put("o3", new Integer[] {31, 28, 33});
-            put("pm10", new Integer[] {4, 4, 6});
-            put("pm25", new Integer[] {14, 12, 23});
-            put("uvi", new Integer[] {0, 0, 3});
-        }});
-
-        Mockito
-                .when(dataAcc.getInfoByStation( stationuri ))
-                .thenReturn( data );
-
-        Mockito
-                .when(dataAcc.getNameByUrl( stationuri ))
-                .thenReturn("Escaldes Engordany, Andorra");
+        configureBehaviourInfoAndorra();
 
         RestAssuredMockMvc
                 .given()
@@ -159,23 +131,7 @@ public class IntegrationTests {
     public void givenStationAndBadType_thenReturnHttpStatus400() {
         String stationuri = "andorra/fixa";
         String t = "bad-type";
-
-        TreeMap<String, HashMap<String, Integer[]>> data = new TreeMap<String, HashMap<String, Integer[]>>();
-        data.put("2021-04-29", new HashMap<String, Integer[]>() {{
-            put("o3", new Integer[] {31, 28, 33});
-            put("pm10", new Integer[] {4, 4, 6});
-            put("pm25", new Integer[] {14, 12, 23});
-            put("uvi", new Integer[] {0, 0, 3});
-        }});
-
-        Mockito
-                .when(dataAcc.getInfoByStation( stationuri ))
-                .thenReturn( data );
-
-        Mockito
-                .when(dataAcc.getNameByUrl( stationuri ))
-                .thenReturn("Escaldes Engordany, Andorra");
-
+        configureBehaviourInfoAndorra();
         RestAssuredMockMvc
                 .given()
                 .when().get("/api/forecast/?station="+stationuri+ "&type=" + t)
@@ -227,8 +183,23 @@ public class IntegrationTests {
 
     /* --- helper --- */
 
-    private void configureBehaviourInfo(String stationuri, TreeMap<String, HashMap<String, Integer[]>> data) {
+    private void configureBehaviourInfoAndorra() {
+        String stationuri = "andorra/fixa";
+        TreeMap<String, HashMap<String, Integer[]>> data = new TreeMap<String, HashMap<String, Integer[]>>();
+        data.put("2021-04-29", new HashMap<String, Integer[]>() {{
+            put("o3", new Integer[] {31, 28, 33});
+            put("pm10", new Integer[] {4, 4, 6});
+            put("pm25", new Integer[] {14, 12, 23});
+            put("uvi", new Integer[] {0, 0, 3});
+        }});
 
+        Mockito
+                .when(dataAcc.getInfoByStation( stationuri ))
+                .thenReturn( data );
+
+        Mockito
+                .when(dataAcc.getNameByUrl( stationuri ))
+                .thenReturn("Escaldes Engordany, Andorra");
     }
 
 
