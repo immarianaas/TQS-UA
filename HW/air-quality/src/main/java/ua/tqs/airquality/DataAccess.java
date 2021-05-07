@@ -39,6 +39,7 @@ public class DataAccess {
             if (inline == null) return null;
             cache.saveInfoByStation(stationurl, inline);
         }
+        System.err.println(inline);
         return getStationInfoFromString(inline);
     }
 
@@ -65,7 +66,11 @@ public class DataAccess {
             data_obj = (JSONObject) parse.parse(inline);
         } catch (ParseException e) { return null; }
 
+        if (data_obj.containsKey("status") && data_obj.get("status").toString().equals("error"))
+            return null;
+
         JSONArray obj = (JSONArray) data_obj.get("data");
+
 
         for (int i = 0; i<obj.size(); i++) {
             JSONObject entry = (JSONObject) ((JSONObject) obj.get(i)).get("station");
@@ -81,12 +86,17 @@ public class DataAccess {
 
 
         JSONParser parse = new JSONParser();
-        JSONObject data1 = null;
+        JSONObject data0 = null;
         try {
-            data1 = (JSONObject) ((JSONObject) parse.parse(inline)).get("data");
+            data0 = (JSONObject) parse.parse(inline);
         } catch (ParseException e) {
             return null;
         }
+
+        if (data0.containsKey("status") && data0.get("status").toString().equals("error"))
+            return null;
+
+        JSONObject data1 = (JSONObject) data0.get("data");
         JSONObject data_obj = (JSONObject) ((JSONObject) data1.get("forecast")).get("daily");
 
         for (Object typeobj : data_obj.keySet()) {
@@ -114,13 +124,17 @@ public class DataAccess {
 
     public static String getNameFromString(String inline) {
         JSONParser parse = new JSONParser();
-        JSONObject data1 = null;
+        JSONObject data0 = null;
         try {
-            data1 = (JSONObject) ((JSONObject) parse.parse(inline)).get("data");
+            data0 = (JSONObject) parse.parse(inline);
         } catch (ParseException e) {
             return null;
         }
 
+        if (data0.containsKey("status") && data0.get("status").toString().equals("error"))
+            return null;
+
+        JSONObject data1 = (JSONObject) data0.get("data");
         Object cityobj = ((JSONObject) data1.get("city")).get("name");
         String cityret = cityobj.toString();
         return cityret;

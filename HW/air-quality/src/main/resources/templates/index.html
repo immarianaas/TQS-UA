@@ -35,6 +35,7 @@
                     <span th:each="entry : ${locations}">
                         <a th:text="${entry.key}" class="dropdown-item" th:id="${entry.value}"
                             onclick="update(this.id)" ></a>
+                    </span>
                 </div>
 
             </div>

@@ -96,7 +96,7 @@ public class ServiceLayerTest {
     @Test
     void whenBadReq_Locations() {
         String badloc = "bad-location";
-        when ( ext.getLocationsByCountry( contains(badloc)) ).thenReturn(null);
+        when ( ext.getLocationsByCountry( contains(badloc)) ).thenReturn("{\"status\":\"error\",\"data\":\"Unknown station\"}");
         when ( cache.getLocationsByCountry( contains(badloc)) ).thenReturn(null);
         
         assertNull(serv.getLocationsByCountry(badloc));
