@@ -21,15 +21,13 @@ public class WebController {
     private DataAccess serv;
 
     @GetMapping("/")
-    public String home(Model model) {//throws MalformedURLException, IOException, ParseException {
-        LOGGER.info("This is working.");
+    public String home(Model model) {
+        LOGGER.info("Home page has been asked.");
         model.addAttribute("title", "Air Quality Forecast!");
         Map<String, String> loc = serv.getLocationsByCountry("finland");
-        // System.out.println(loc);
 
         model.addAttribute("locations", loc );
-        // o simbolo da "/" supostamente corresponde a %2F em URL encoded
-        return "index";     
+        return "index";
     }
 
     @GetMapping("/info")
@@ -41,17 +39,8 @@ public class WebController {
         model.addAttribute("info", info);
         model.addAttribute("loc", loc);
          return "index::showinfo";
-        //return "index";
     }
-
-    
-    /* // afinal acho que não é preciso!
-    private String encodeURLSlash(String url) {
-        return url.replace("/", "%2F");
-    }
-    */
 
     // http://api.waqi.info/search/?keyword=portugal&token=00f39d0202548c6b433775ef228bc9588b58ff28
-
 
 }

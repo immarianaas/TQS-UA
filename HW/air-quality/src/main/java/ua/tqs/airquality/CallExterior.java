@@ -8,70 +8,48 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CallExterior {
-    private final String TOKEN = "00f39d0202548c6b433775ef228bc9588b58ff28";
+    private static final String TOKEN = "00f39d0202548c6b433775ef228bc9588b58ff28";
 
     public String getLocationsByCountry(String country) {
-        String url_ = "http://api.waqi.info/search/?keyword="+ country +"&token=" + TOKEN;
-        URL url;
-        String inline = null;
-        try {
-            url = new URL(url_);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.connect();
-                    // get the resp. code
-            int respcode = conn.getResponseCode();
-
-            if (respcode != 200) {
-                throw new RuntimeException("Response code not OK.");
-            }
-            Scanner sc = new Scanner(url.openStream());
-            StringBuilder sb = new StringBuilder();
-            while (sc.hasNextLine()) {
-                sb.append(sc.nextLine());
-            }
-            inline = sb.toString();
-            sc.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return inline;
-
+        String urlstring = "http://api.waqi.info/search/?keyword="+ country +"&token=" + TOKEN;
+        return getData(urlstring);
     }
 
     public String getInfoByStation(String stationurl) {
-        String url_ = "http://api.waqi.info/feed/"+ stationurl +"/?token=" + TOKEN;
+        String urlstring = "http://api.waqi.info/feed/"+ stationurl +"/?token=" + TOKEN;
+        return getData(urlstring);
+    }
+
+
+    private String getData(String urlstring) {
         URL url;
-        // valuesPerDate = new TreeMap<String, HashMap<String, Integer[]>>();
-        String inline = null;
+
+        int respcode = -1;
         try {
-            url = new URL(url_);
+            url = new URL(urlstring);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
-                    // get the resp. code
-            int respcode = conn.getResponseCode();
-
-
-            if (respcode != 200) {
-                throw new RuntimeException("HELPPPP");
-            }
-            Scanner sc = new Scanner(url.openStream());
-            StringBuilder sb = new StringBuilder();
-            while (sc.hasNextLine()) {
-                sb.append(sc.nextLine());
-            }
-            inline = sb.toString();
-            sc.close();
+            // get the resp. code
+            respcode = conn.getResponseCode();
 
         } catch (Exception e) {
             return null;
         }
 
-        
-        return inline;
+        if (respcode != 200) return null;
+
+        try (Scanner sc = new Scanner(url.openStream())) {
+            StringBuilder sb = new StringBuilder();
+            while (sc.hasNextLine()) {
+                sb.append(sc.nextLine());
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            return null;
+        }
     }
+
 
 
 }

@@ -3,28 +3,25 @@ package ua.tqs.airquality;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class Cache {
-    // private Map<String, Map<String, String>> locations = new HashMap<String, Map<String, String>>();
-    private Map<String, String> locations = new HashMap<String, String>();
+    private Map<String, String> locations = new HashMap<>();
 
-    // private Map<String, TreeMap<String, HashMap<String, Integer[]>>> info = new HashMap<String, TreeMap<String, HashMap<String, Integer[]>>>();
-    private Map<String, String> info = new HashMap<String, String>();
-    private Map<String, String> urlToName = new HashMap<String, String>();
+    private Map<String, String> info = new HashMap<>();
+
     private int misses = 0;
     private int hits = 0;
 
     public static final long TTL = 5;
 
-    private Map<String, Instant> requestTime = new HashMap<String, Instant>();
+    private Map<String, Instant> requestTime = new HashMap<>();
 
-    private static String LOCATIONS_CODE = "locations+";
-    private static  String INFO_CODE = "info+";
+    private static final String LOCATIONS_CODE = "locations+";
+    private static final String INFO_CODE = "info+";
 
     /* --- get info --- */
     public String getLocationsByCountry(String country) {
@@ -58,12 +55,6 @@ public class Cache {
         hits += 1;
         return info.get(stationurl);
     }
-/*
-    public String getStationNameByUrl(String stationurl) {
-        if (!urlToName.containsKey(stationurl)) return null;
-        return urlToName.get(stationurl);
-    }
- */
 
 
     public int getNoHits() { return hits; }
@@ -80,7 +71,6 @@ public class Cache {
 
     public void saveInfoByStation(String stationurl, String data) {
         info.put(stationurl.toLowerCase(), data);
-        // urlToName.put(stationurl, stationname);
         String key = INFO_CODE + stationurl;
         requestTime.put(key, Instant.now());
     }

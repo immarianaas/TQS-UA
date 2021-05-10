@@ -14,7 +14,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DataAccess {
-    
+
+    private static final String ERRORSTATUS = "error";
+    private static final String STATUSFIELD = "status";
+
     @Autowired
     private CallExterior callExterior;
 
@@ -39,7 +42,6 @@ public class DataAccess {
             if (inline == null) return null;
             cache.saveInfoByStation(stationurl, inline);
         }
-        System.err.println(inline);
         return getStationInfoFromString(inline);
     }
 
@@ -58,18 +60,18 @@ public class DataAccess {
     /* --- helper --- */
 
     public static Map<String, String> getLocationInfoFromString(String inline) {
-        Map<String, String> locations = new TreeMap<String, String>();
+        Map<String, String> locations = new TreeMap<>();
 
         JSONParser parse = new JSONParser();
-        JSONObject data_obj;
+        JSONObject dataObj;
         try {
-            data_obj = (JSONObject) parse.parse(inline);
+            dataObj = (JSONObject) parse.parse(inline);
         } catch (ParseException e) { return null; }
 
-        if (data_obj.containsKey("status") && data_obj.get("status").toString().equals("error"))
+        if (dataObj.containsKey(STATUSFIELD) && dataObj.get(STATUSFIELD).toString().equals(ERRORSTATUS))
             return null;
 
-        JSONArray obj = (JSONArray) data_obj.get("data");
+        JSONArray obj = (JSONArray) dataObj.get("data");
 
 
         for (int i = 0; i<obj.size(); i++) {
@@ -82,7 +84,7 @@ public class DataAccess {
 
 
     public static TreeMap<String, HashMap<String, Integer[]>> getStationInfoFromString(String inline) {
-        TreeMap<String, HashMap<String, Integer[]>> valuesPerDate = new TreeMap<String, HashMap<String, Integer[]>>();
+        TreeMap<String, HashMap<String, Integer[]>> valuesPerDate = new TreeMap<>();
 
 
         JSONParser parse = new JSONParser();
@@ -93,15 +95,15 @@ public class DataAccess {
             return null;
         }
 
-        if (data0.containsKey("status") && data0.get("status").toString().equals("error"))
+        if (data0.containsKey(STATUSFIELD) && data0.get(STATUSFIELD).toString().equals(ERRORSTATUS))
             return null;
 
         JSONObject data1 = (JSONObject) data0.get("data");
-        JSONObject data_obj = (JSONObject) ((JSONObject) data1.get("forecast")).get("daily");
+        JSONObject dataObj = (JSONObject) ((JSONObject) data1.get("forecast")).get("daily");
 
-        for (Object typeobj : data_obj.keySet()) {
+        for (Object typeobj : dataObj.keySet()) {
             String type = typeobj.toString();
-            JSONArray data = (JSONArray) data_obj.get(type);
+            JSONArray data = (JSONArray) dataObj.get(type);
             for (int j = 0; j<data.size(); j++) {
 
                 JSONObject info = (JSONObject) data.get(j);
@@ -110,9 +112,8 @@ public class DataAccess {
                 Integer min = Integer.parseInt(info.get("min").toString());
                 Integer max = Integer.parseInt(info.get("max").toString());
                 Integer[] numbers = new Integer[] {avg, min, max};
-                if (!valuesPerDate.containsKey(date))
-                    valuesPerDate.put(date, new HashMap<String, Integer[]>());
-                
+
+                valuesPerDate.computeIfAbsent(date, k -> new HashMap<>());
                 HashMap<String, Integer[]> datahm = valuesPerDate.get(date);
                 
                 datahm.put(type, numbers);
@@ -131,13 +132,12 @@ public class DataAccess {
             return null;
         }
 
-        if (data0.containsKey("status") && data0.get("status").toString().equals("error"))
+        if (data0.containsKey(STATUSFIELD) && data0.get(STATUSFIELD).toString().equals(ERRORSTATUS))
             return null;
 
         JSONObject data1 = (JSONObject) data0.get("data");
         Object cityobj = ((JSONObject) data1.get("city")).get("name");
-        String cityret = cityobj.toString();
-        return cityret;
+        return cityobj.toString();
     }
 
 

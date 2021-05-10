@@ -24,7 +24,7 @@ import static org.mockito.ArgumentMatchers.*;
 
 @WebMvcTest(ApiController.class)
 // @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class IntegrationTests {
+class IntegrationTests {
 
     /*
     @LocalServerPort
@@ -44,12 +44,12 @@ public class IntegrationTests {
     private CallExterior ext;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         RestAssuredMockMvc.mockMvc(mockMvc);
     }
 
     @Test
-    public void givenCountry_thenReturnStations() {
+    void givenCountry_thenReturnStations() {
         String country = "andorra";
         Mockito
                 .when(dataAcc.getLocationsByCountry( anyString() ))
@@ -71,7 +71,7 @@ public class IntegrationTests {
     }
 
     @Test
-    public void givenInvalidCountry_thenReturnHttpCode404() {
+    void givenInvalidCountry_thenReturnHttpCode404() {
         String country = "invalid-country";
         Mockito
                 .when(dataAcc.getLocationsByCountry( country ))
@@ -87,7 +87,7 @@ public class IntegrationTests {
     }
 
     @Test
-    public void givenStation_thenReturnForecast() {
+    void givenStation_thenReturnForecast() {
         String stationuri = "andorra/fixa";
 
         configureBehaviourInfoAndorra();
@@ -107,7 +107,7 @@ public class IntegrationTests {
     }
 
     @Test
-    public void givenStationAndType_thenReturnForecast() {
+    void givenStationAndType_thenReturnForecast() {
         String stationuri = "andorra/fixa";
         String t = "uvi";
 
@@ -128,7 +128,7 @@ public class IntegrationTests {
     }
 
     @Test
-    public void givenStationAndBadType_thenReturnHttpStatus400() {
+    void givenStationAndBadType_thenReturnHttpStatus400() {
         String stationuri = "andorra/fixa";
         String t = "bad-type";
         configureBehaviourInfoAndorra();
@@ -143,7 +143,7 @@ public class IntegrationTests {
 
 
     @Test
-    public void givenInvalidStation_thenReturnHttpCode404() {
+    void givenInvalidStation_thenReturnHttpCode404() {
         String station = "invalid-station";
         Mockito
                 .when(dataAcc.getInfoByStation( station ))
@@ -158,7 +158,7 @@ public class IntegrationTests {
     }
 
     @Test
-    public void test_getCacheStats() {
+    void test_getCacheStats() {
         Mockito
                 .when(cache.getNoHits())
                 .thenReturn(1);
