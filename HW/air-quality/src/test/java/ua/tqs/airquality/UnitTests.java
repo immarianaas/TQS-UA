@@ -87,9 +87,9 @@ class UnitTests {
 
     /* --- DataAccess ~= Utils --- */
     @Test
-    void testUtils_getLocationInfoFromString() {
+    void testDataAccess_getLocationInfoFromString() {
         String andorra = "{\"status\":\"ok\",\"data\":[{\"uid\":8411,\"aqi\":\"26\",\"time\":{\"tz\":\"+02:00\",\"stime\":\"2021-05-01 15:00:00\",\"vtime\":1619874000},\"station\":{\"name\":\"Escaldes Engordany, Andorra\",\"geo\":[42.509694,1.539138],\"url\":\"andorra/fixa\"}}]}";
-        Map<String, String> expected = new TreeMap<String, String>();
+        Map<String, String> expected = new TreeMap<>();
         expected.put("Escaldes Engordany, Andorra", "andorra/fixa");
 
         Map<String, String> ret = DataAccess.getLocationInfoFromString(andorra);
@@ -97,7 +97,7 @@ class UnitTests {
     }
 
     @Test
-    void testUtils_getStationInfoFromString() {
+    void testDataAccess_getStationInfoFromString() {
         String info_json = "{\"status\":\"ok\",\"data\":{\"aqi\":33,\"idx\":8411,\"attributions\":[{\"url\":\"http://www.mediambient.ad/\",\"name\":\"Departament de Medi Ambient d'Andorra - Qualitat de l'Aire a Andorra\",\"logo\":\"govern-d-andorra.jpg\"},{\"url\":\"https://waqi.info/\",\"name\":\"World Air Quality Index Project\"}],\"city\":{\"geo\":[42.509694,1.539138],\"name\":\"Escaldes Engordany, Andorra\",\"url\":\"https://aqicn.org/city/andorra/fixa\"},\"dominentpol\":\"o3\",\"iaqi\":{\"h\":{\"v\":50.5},\"no2\":{\"v\":5.5},\"o3\":{\"v\":32.5},\"p\":{\"v\":1010.5},\"pm10\":{\"v\":8},\"pm25\":{\"v\":25},\"so2\":{\"v\":0.6},\"t\":{\"v\":10.5},\"w\":{\"v\":2.5},\"wg\":{\"v\":7.5}},\"time\":{\"s\":\"2021-05-01 17:00:00\",\"tz\":\"+02:00\",\"v\":1619888400,\"iso\":\"2021-05-01T17:00:00+02:00\"},\"forecast\":{\"daily\":{\"o3\":[{\"avg\":31,\"day\":\"2021-04-29\",\"max\":33,\"min\":28}],\"pm10\":[{\"avg\":4,\"day\":\"2021-04-29\",\"max\":6,\"min\":4}],\"pm25\":[{\"avg\":14,\"day\":\"2021-04-29\",\"max\":23,\"min\":12}],\"uvi\":[{\"avg\":0,\"day\":\"2021-04-29\",\"max\":3,\"min\":0}]}},\"debug\":{\"sync\":\"2021-05-02T00:26:33+09:00\"}}}";
 
         TreeMap<String, HashMap<String, Integer[]>> expected = new TreeMap<String, HashMap<String, Integer[]>>();
@@ -121,13 +121,12 @@ class UnitTests {
     }
 
     @Test
-    void testUtils_getStationNameFromString() {
+    void testDataAccess_getStationNameFromString() {
         String info_json = "{\"status\":\"ok\",\"data\":{\"aqi\":33,\"idx\":8411,\"attributions\":[{\"url\":\"http://www.mediambient.ad/\",\"name\":\"Departament de Medi Ambient d'Andorra - Qualitat de l'Aire a Andorra\",\"logo\":\"govern-d-andorra.jpg\"},{\"url\":\"https://waqi.info/\",\"name\":\"World Air Quality Index Project\"}],\"city\":{\"geo\":[42.509694,1.539138],\"name\":\"Escaldes Engordany, Andorra\",\"url\":\"https://aqicn.org/city/andorra/fixa\"},\"dominentpol\":\"o3\",\"iaqi\":{\"h\":{\"v\":50.5},\"no2\":{\"v\":5.5},\"o3\":{\"v\":32.5},\"p\":{\"v\":1010.5},\"pm10\":{\"v\":8},\"pm25\":{\"v\":25},\"so2\":{\"v\":0.6},\"t\":{\"v\":10.5},\"w\":{\"v\":2.5},\"wg\":{\"v\":7.5}},\"time\":{\"s\":\"2021-05-01 17:00:00\",\"tz\":\"+02:00\",\"v\":1619888400,\"iso\":\"2021-05-01T17:00:00+02:00\"},\"forecast\":{\"daily\":{\"o3\":[{\"avg\":31,\"day\":\"2021-04-29\",\"max\":33,\"min\":28}],\"pm10\":[{\"avg\":4,\"day\":\"2021-04-29\",\"max\":6,\"min\":4}],\"pm25\":[{\"avg\":14,\"day\":\"2021-04-29\",\"max\":23,\"min\":12}],\"uvi\":[{\"avg\":0,\"day\":\"2021-04-29\",\"max\":3,\"min\":0}]}},\"debug\":{\"sync\":\"2021-05-02T00:26:33+09:00\"}}}";
         String expected = "Escaldes Engordany, Andorra";
 
         String got = DataAccess.getNameFromString(info_json);
         assertThat(got, equalTo(expected));
-        
     }
 
 }

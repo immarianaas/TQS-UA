@@ -1,8 +1,7 @@
 package ua.tqs.airquality;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -52,7 +51,7 @@ class ServiceLayerTest {
     void whenAllGood_CacheLocations() {
         String json = "{\"status\":\"ok\",\"data\":[{\"uid\":8411,\"aqi\":\"26\",\"time\":{\"tz\":\"+02:00\",\"stime\":\"2021-05-01 15:00:00\",\"vtime\":1619874000},\"station\":{\"name\":\"Escaldes Engordany, Andorra\",\"geo\":[42.509694,1.539138],\"url\":\"andorra/fixa\"}}]}";
 
-        Map<String, String> expected_res = new TreeMap<String, String>();
+        Map<String, String> expected_res = new TreeMap<>();
         expected_res.put("Escaldes Engordany, Andorra", "andorra/fixa");
 
         // the CallExterior service shouldn't even be needed!
@@ -62,6 +61,27 @@ class ServiceLayerTest {
         Map<String, String> result = serv.getLocationsByCountry("andorra");
         assertEquals(expected_res, result);
     }
+
+    @Test
+    void whenAllGood_getStationName() {
+        String info_json = "{\"status\":\"ok\",\"data\":{\"aqi\":33,\"idx\":8411,\"attributions\":[{\"url\":\"http://www.mediambient.ad/\",\"name\":\"Departament de Medi Ambient d'Andorra - Qualitat de l'Aire a Andorra\",\"logo\":\"govern-d-andorra.jpg\"},{\"url\":\"https://waqi.info/\",\"name\":\"World Air Quality Index Project\"}],\"city\":{\"geo\":[42.509694,1.539138],\"name\":\"Escaldes Engordany, Andorra\",\"url\":\"https://aqicn.org/city/andorra/fixa\"},\"dominentpol\":\"o3\",\"iaqi\":{\"h\":{\"v\":50.5},\"no2\":{\"v\":5.5},\"o3\":{\"v\":32.5},\"p\":{\"v\":1010.5},\"pm10\":{\"v\":8},\"pm25\":{\"v\":25},\"so2\":{\"v\":0.6},\"t\":{\"v\":10.5},\"w\":{\"v\":2.5},\"wg\":{\"v\":7.5}},\"time\":{\"s\":\"2021-05-01 17:00:00\",\"tz\":\"+02:00\",\"v\":1619888400,\"iso\":\"2021-05-01T17:00:00+02:00\"},\"forecast\":{\"daily\":{\"o3\":[{\"avg\":31,\"day\":\"2021-04-29\",\"max\":33,\"min\":28}],\"pm10\":[{\"avg\":4,\"day\":\"2021-04-29\",\"max\":6,\"min\":4}],\"pm25\":[{\"avg\":14,\"day\":\"2021-04-29\",\"max\":23,\"min\":12}],\"uvi\":[{\"avg\":0,\"day\":\"2021-04-29\",\"max\":3,\"min\":0}]}},\"debug\":{\"sync\":\"2021-05-02T00:26:33+09:00\"}}}";
+        String stationUrl = "andorra/fixa";
+        when ( ext.getInfoByStation( contains( stationUrl )) ).thenReturn( info_json );
+        when ( cache.getInfoByStation(anyString())).thenReturn(null);
+
+        assertThat(serv.getNameByUrl(stationUrl), equalTo("Escaldes Engordany, Andorra"));
+    }
+
+    @Test
+    void whenBadReq_getStationName() {
+        String info_json = "{\"status\":\"error\",\"data\":{\"Unknown station\"}";
+        String stationUrl = "bad-location";
+        when ( ext.getInfoByStation( contains( stationUrl )) ).thenReturn( info_json );
+        when ( cache.getInfoByStation(anyString())).thenReturn(null);
+
+        assertThat(serv.getNameByUrl(stationUrl), nullValue());
+    }
+
 
     @Test
     void whenAllGood_StationInfo() {
