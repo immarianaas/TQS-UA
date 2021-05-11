@@ -5,17 +5,15 @@ pipeline {
 		maven 'mvn'
 	}
 	stages {
-		stage('test java installation') {
+		stage('install') {
 			steps {
 				dir('./Lab-8/air-quality') {
-					sh 'java -version'
+					sh 'mvn clean install'
 				}
 			}
-		}
-		stage('test maven installation') {
-			steps {
-				dir('./Lab-8/air-quality') {
-					sh 'mvn -version'
+			post {
+				always {
+					junit '**/target/*-reports/TEST-*.xml'
 				}
 			}
 		}
