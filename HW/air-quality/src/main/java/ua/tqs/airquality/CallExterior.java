@@ -4,9 +4,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class CallExterior {
     private static final String TOKEN = "00f39d0202548c6b433775ef228bc9588b58ff28";
 

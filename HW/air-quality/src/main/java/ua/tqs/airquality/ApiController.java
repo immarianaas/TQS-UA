@@ -45,7 +45,7 @@ public class ApiController {
          */
 
         Map<String, String> loc = serv.getLocationsByCountry(countr);
-        if (loc == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (loc == null) return new ResponseEntity<>(HttpStatus.FAILED_DEPENDENCY);
 
         ArrayList<Map<String, String>> stationsList = new ArrayList<>();
 

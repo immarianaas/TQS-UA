@@ -78,9 +78,26 @@ class UnitTests {
         // double checking that before the TTL it returned
         assertThat(ret, notNullValue());
 
+        Cache.TTL = 1;
         // if the cache doesnt return null in Cache.TTL seconds, then it fails!
         Awaitility.await().atMost(Cache.TTL, TimeUnit.SECONDS).until(
                 () -> cache.getInfoByStation(stationurl) == null
+        );
+    }
+
+    @Test
+    void testCache_testStationsTTL() {
+        String andorra = "{\"status\":\"ok\",\"data\":[{\"uid\":8411,\"aqi\":\"26\",\"time\":{\"tz\":\"+02:00\",\"stime\":\"2021-05-01 15:00:00\",\"vtime\":1619874000},\"station\":{\"name\":\"Escaldes Engordany, Andorra\",\"geo\":[42.509694,1.539138],\"url\":\"andorra/fixa\"}}]}";
+        String country = "andorra";
+        cache.saveLocationsByCountry(country, andorra);
+        String ret = cache.getLocationsByCountry(country);
+        // double checking that before the TTL it returned
+        assertThat(ret, notNullValue());
+
+        Cache.TTL = 1;
+        // if the cache doesnt return null in Cache.TTL seconds, then it fails!
+        Awaitility.await().atMost(Cache.TTL, TimeUnit.SECONDS).until(
+                () -> cache.getLocationsByCountry(country) == null
         );
     }
 

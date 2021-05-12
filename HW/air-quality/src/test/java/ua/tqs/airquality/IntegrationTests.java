@@ -23,13 +23,7 @@ import static org.mockito.ArgumentMatchers.*;
 
 
 @WebMvcTest(ApiController.class)
-// @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IntegrationTests {
-
-    /*
-    @LocalServerPort
-    private int port;
-     */
 
     @Autowired
     private MockMvc mockMvc;
@@ -53,7 +47,7 @@ class IntegrationTests {
         String country = "andorra";
         Mockito
                 .when(dataAcc.getLocationsByCountry( anyString() ))
-                .thenReturn(new HashMap<String, String>() {{
+                .thenReturn(new HashMap<>() {{
                     put("Escaldes Engordany, Andorra", "andorra/fixa");
                 }});
 
@@ -64,25 +58,27 @@ class IntegrationTests {
                     .log().all()
                     .statusCode(200)
                     .body("country", Matchers.equalTo(country))
-                    .body("stations.size()", Matchers.equalTo(1))
+                    .body("stations.size()", is(1))
                     .body("stations[0].name", Matchers.equalTo("Escaldes Engordany, Andorra"))
                     .body("stations[0].uri", Matchers.equalTo("andorra/fixa"))
                     ;
     }
 
     @Test
-    void givenInvalidCountry_thenReturnHttpCode404() {
+    void givenInvalidCountry_thenReturnEmptyList() {
         String country = "invalid-country";
         Mockito
                 .when(dataAcc.getLocationsByCountry( country ))
-                .thenReturn(null);
+                .thenReturn(new TreeMap<String, String>());
 
         RestAssuredMockMvc
                 .given()
                 .when().get("/api/stations?country="+country)
                 .then()
                 .log().all()
-                .statusCode(404);
+                .statusCode(200)
+                .body("stations.size()", is(0))
+                ;
 
     }
 
@@ -98,11 +94,11 @@ class IntegrationTests {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("size()", Matchers.equalTo(3))
+                .body("size()", is(3))
                 .body("stationname", Matchers.equalTo("Escaldes Engordany, Andorra"))
                 .body("stationuri", Matchers.equalTo(stationuri))
                 .body("forecast[0].date", Matchers.equalTo("2021-04-29"))
-                .body("forecast[0].values[0].avg", equalTo(31))
+                .body("forecast[0].values[0].avg", is(31))
                 ;
     }
 
@@ -119,11 +115,12 @@ class IntegrationTests {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("size()", Matchers.equalTo(3))
+                .body("size()", is(3))
                 .body("stationname", Matchers.equalTo("Escaldes Engordany, Andorra"))
                 .body("stationuri", Matchers.equalTo(stationuri))
                 .body("forecast[0].date", Matchers.equalTo("2021-04-29"))
-                .body("forecast[0].values[0].avg", equalTo(0))
+                .body("forecast[0].values[0].type", equalTo(t))
+                .body("forecast[0].values[0].avg", is(0))
                 ;
     }
 
@@ -138,7 +135,6 @@ class IntegrationTests {
                 .then()
                 .log().all()
                 .statusCode(400);
-
     }
 
 
@@ -156,6 +152,7 @@ class IntegrationTests {
                 .log().all()
                 .statusCode(404);
     }
+
 
     @Test
     void test_getCacheStats() {
@@ -175,9 +172,9 @@ class IntegrationTests {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("hits", Matchers.equalTo(1))
-                .body("misses", Matchers.equalTo(2))
-                .body("requests", Matchers.equalTo(3))
+                .body("hits", is(1))
+                .body("misses", is(2))
+                .body("requests", is(3))
                 ;
     }
 

@@ -16,6 +16,12 @@
     <div class="container">
         <h1 th:text="${title}"></h1>
 
+        <div th:if="!${good}">
+            <h3>Errors occurred during communication with external API.</h3>
+        </div>
+
+        <div th:if="${good}">
+
         <div>
             <h3>Select your location:</h3>
 
@@ -42,6 +48,7 @@
 
 
         </div>
+
 
         <!--
     
@@ -71,6 +78,9 @@
                 </table>
             </div>
         </div>
+        </div> <!-- good-->
+
+
         <!--
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

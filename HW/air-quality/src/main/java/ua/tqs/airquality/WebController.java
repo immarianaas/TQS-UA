@@ -25,7 +25,10 @@ public class WebController {
         LOGGER.info("Home page has been asked.");
         model.addAttribute("title", "Air Quality Forecast!");
         Map<String, String> loc = serv.getLocationsByCountry("finland");
-
+        boolean good = true;
+        if (loc == null)
+             good = false;
+        model.addAttribute("good", good);
         model.addAttribute("locations", loc );
         return "index";
     }
@@ -35,7 +38,10 @@ public class WebController {
         model.addAttribute("title", "yay!!");
         TreeMap<String, HashMap<String, Integer[]>> info = serv.getInfoByStation(city);
         String loc = serv.getNameByUrl(city);
-
+        boolean good = true;
+        if (loc == null || info == null)
+            good = false;
+        model.addAttribute("good", good);
         model.addAttribute("info", info);
         model.addAttribute("loc", loc);
          return "index::showinfo";

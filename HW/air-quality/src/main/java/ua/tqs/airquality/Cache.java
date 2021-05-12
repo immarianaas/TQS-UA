@@ -5,9 +5,10 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class Cache {
     private Map<String, String> locations = new HashMap<>();
 
@@ -16,7 +17,7 @@ public class Cache {
     private int misses = 0;
     private int hits = 0;
 
-    public static final long TTL = 5;
+    public static long TTL = 5;
 
     private Map<String, Instant> requestTime = new HashMap<>();
 
