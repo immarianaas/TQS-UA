@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/mar/Documents/UA/6-semester/TQS/TQS-UA/HW/air-quality</OriginalElement>
+  <nodes>
+    <node x="424.0" y="497.0">ua.tqs.airquality.DataAccess</node>
+    <node x="0.0" y="327.25538461538474">ua.tqs.airquality.Cache</node>
+    <node x="940.4769230769232" y="863.5">ua.tqs.airquality.AirQualityApplication</node>
+    <node x="589.5" y="863.5">ua.tqs.airquality.WebController</node>
+    <node x="414.8246153846153" y="253.35692307692307">ua.tqs.airquality.CallExterior</node>
+    <node x="45.5" y="851.0">ua.tqs.airquality.ApiController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ua.tqs.airquality.ApiController" target="ua.tqs.airquality.Cache" relationship="TO_ONE">
+      <point x="-131.0" y="-91.5" />
+      <point x="176.5" y="649.0" />
+      <point x="176.5" y="649.0" />
+      <point x="0.0" y="223.5" />
+    </edge>
+    <edge source="ua.tqs.airquality.DataAccess" target="ua.tqs.airquality.CallExterior" relationship="TO_ONE">
+      <point x="149.5" y="-151.0" />
+      <point x="872.5" y="399.75" />
+      <point x="568.8246153846153" y="399.75" />
+      <point x="0.0" y="79.0" />
+    </edge>
+    <edge source="ua.tqs.airquality.ApiController" target="ua.tqs.airquality.DataAccess" relationship="TO_ONE">
+      <point x="131.0" y="-91.5" />
+      <point x="438.5" y="825.0" />
+      <point x="723.0" y="825.0" />
+      <point x="0.0" y="151.0" />
+    </edge>
+    <edge source="ua.tqs.airquality.DataAccess" target="ua.tqs.airquality.Cache" relationship="TO_ONE">
+      <point x="-149.5" y="-151.0" />
+      <point x="573.5" y="472.0" />
+      <point x="176.5" y="472.0" />
+      <point x="0.0" y="223.5" />
+    </edge>
+    <edge source="ua.tqs.airquality.WebController" target="ua.tqs.airquality.DataAccess" relationship="TO_ONE">
+      <point x="0.0" y="-79.0" />
+      <point x="0.0" y="151.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6539235412474848" showDependencies="true" x="957.8015384615387" y="469.3046153846155" />
+  <SelectedNodes>
+    <node>ua.tqs.airquality.CallExterior</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

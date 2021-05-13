@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class CallExterior {

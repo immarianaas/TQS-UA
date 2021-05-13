@@ -1,0 +1,21 @@
+pipeline {
+	agent any
+	tools {
+		jdk 'jdk11'
+		maven 'mvn'
+	}
+	stages {
+		stage('install') {
+			steps {
+				dir('./air-quality') {
+					sh 'mvn clean install'
+				}
+			}
+			post {
+				always {
+					junit '**/target/*-reports/TEST-*.xml'
+				}
+			}
+		}
+	}
+}
