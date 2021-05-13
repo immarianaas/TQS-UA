@@ -15,7 +15,6 @@ public class Cache {
 
     private int misses = 0;
     private int hits = 0;
-
     public static long TTL = 5;
 
     private Map<String, Instant> requestTime = new HashMap<>();
