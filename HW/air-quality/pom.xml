@@ -123,6 +123,7 @@
 				<version>2.22.2</version>
 			</plugin>
 			<plugin>
+				
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
