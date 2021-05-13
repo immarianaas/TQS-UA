@@ -23,6 +23,11 @@ class UnitTests {
     }
 
 
+    @Test
+    void failTest() {
+        failTest();
+    }
+
     /* --- Cache --- */
     @Test
     void testCache_saveLocationsByCountry() {
